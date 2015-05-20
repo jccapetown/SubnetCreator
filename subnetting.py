@@ -70,7 +70,7 @@ def list_subnets():
 		subnets = list(ipstats['ipnetwork'].subnet(subnets))
 		for ix,subnet in enumerate(subnets):
 			ip = IPNetwork(subnet)
-			f.write("%s|%s|%s|%s|%s|%s|%s\n" % (ix, len(ip), subnet, str("%s - %s" % (ip[1], ip[-2])), ip.netmask,ip.network, ip.broadcast ) )
+			f.write("%s|%s|%s|%s|%s|%s|%s\n" % ( (ix+1), len(ip), subnet, str("%s - %s" % (ip[1], ip[-2])), ip.netmask,ip.network, ip.broadcast ) )
 		f.close()	
 		print "File subnetlist.csv created."		
 	else:
@@ -78,7 +78,7 @@ def list_subnets():
 		print "Num.".ljust(6, ' ') + "Hosts".ljust(8," ") + "Subnet".ljust(20, ' ') +"Block".ljust(40, ' ')  + "Netmask".ljust(18,' ')	+ "Network Addr".ljust(15, " ") + "Broadcast"
 		for ix,subnet in enumerate(subnets):
 			ip = IPNetwork(subnet)
-			number = '%s.' % ix
+			number = '%s.' % (ix+1)
 			print str(number).ljust(6, ' ') + str(len(ip)).ljust(8," ") + str(subnet).ljust(20, ' ')  + str("%s - %s" % (ip[1], ip[-2])).ljust(40,' ')  + str(ip.netmask).ljust(18,' ')	+ str(ip.network).ljust(15, " ") + str(ip.broadcast)
 	
 	raw_input('Press any key to continue...')	
